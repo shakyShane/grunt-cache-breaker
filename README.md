@@ -9,11 +9,16 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 npm install grunt-cache-breaker --save-dev
 ```
 
+## Note:
+This plugin was written for use within this boilerplate [https://github.com/shakyShane/laravel4-backbone-marionette](https://github.com/shakyShane/laravel4-backbone-marionette) - it may work elsewhere, but no guarantees.
+
+
+
 Once the plugin has been installed, add this to your Gruntfile.js
 
-```js
-grunt.loadNpmTasks('grunt-cache-breaker');
-```
+
+    grunt.loadNpmTasks('grunt-cache-breaker');
+
 
 ## The "cache_breaker" task
 
@@ -28,17 +33,18 @@ cache_breaker : {
     files   : {
       'app/views/layouts/master.blade.php' : ['app/views/layouts/master.blade.php']
     }
-  },
-},
+  }
+}
 ```
+
 
 ## Run
 
 Run the task using this command
 
-```shell
-grunt cache_breaker:js
-```
+
+    grunt cache_breaker:js
+
 
 
 ## Contributing
