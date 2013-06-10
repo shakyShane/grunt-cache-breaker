@@ -1,7 +1,7 @@
 {
   "name": "grunt-cache-breaker",
   "description": "Simple cache-breaker for use with the L4 BBMB",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/shanenew/cachebreaker",
   "author": {
     "name": "Shane Osbourne",
