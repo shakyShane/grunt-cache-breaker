@@ -1,6 +1,4 @@
-# cache-breaker
-
-> The best Grunt plugin ever.
+# grunt-cache-breaker
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
