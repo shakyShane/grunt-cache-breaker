@@ -40,7 +40,7 @@ module.exports = function(grunt) {
       var write   = grunt.file.write( f.dest, newData);
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      grunt.log.writeln('Asset URL in "' + f.dest + '" has been updated to break the cache.');
     });
 
   });
