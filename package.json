@@ -1,7 +1,7 @@
 {
   "name": "grunt-cache-breaker",
-  "description": "Simple cache-breaker for use with the L4 BBMB",
-  "version": "0.2.0",
+  "description": "Simple cache-breaker, appends a timestamp to a give asset url",
+  "version": "0.3.0",
   "homepage": "https://github.com/shakyshane/grunt-cache-breaker",
   "author": {
     "name": "Shane Osbourne",
