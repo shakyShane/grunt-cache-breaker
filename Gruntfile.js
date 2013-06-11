@@ -12,38 +12,79 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+
+    js_dir        : 'public/js',
+    js_dist       : '<%= js_dir %>/dist/combined',
+    js_dist_file  : '<%= js_dist %>.min.js',
+    css_dir       : 'public/css',
+    css_dist_file : '<%= css_dir %>/style.css',
+    js_src        : 'test/fixtures/js',
+    js_src_error  : 'test/fixtures/js_error',
+    css_src       : 'test/fixtures/css',
+    js_dest       : 'tmp/js',
+    js_dest_error : 'tmp/js_error',
+    css_dest      : 'tmp/css',
     jshint: {
       all: [
         'Gruntfile.js',
         'tasks/*.js',
-        '<%= nodeunit.tests %>',
+        '<%= nodeunit.tests %>'
       ],
       options: {
-        jshintrc: '.jshintrc',
-      },
+        jshintrc: '.jshintrc'
+      }
     },
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp'],
+      tests: ['tmp']
     },
 
-    // Configuration to be run (and then tested).
+    // The task
     cache_breaker: {
-      default_options: {
+      js: {
         options: {
-          filename : 'public/js/dist/combined.min.js'
+          asset_url : '<%= js_dist_file %>',
+          remove   : 'public'
         },
         files: {
-          'tmp/default_options': ['test/fixtures/testing'],
-        },
+          '<%= js_dest %>': ['<%= js_src %>']
+        }
       },
+      js_src_error : {
+        options : {
+          asset_url : '<%= js_dist_file %>',
+          remove   : 'public'
+        },
+        files   : {
+          '<%= js_dest_error %>' : ['test/fixtures/js_file_error'] /** source file does not exist **/
+        }
+      },
+      js_asset_error : {
+        options : {
+          asset_url : '/asset/url/incorrect', /** asset url is incorrect **/
+          remove   : 'public'
+        },
+        files   : {
+          '<%= js_dest_error %>' : ['test/fixtures/js_error']
+        }
+      },
+      css : {
+        options : {
+          asset_url : '<%= css_dist_file %>',
+          remove   : 'public'
+        },
+        files   : {
+          '<%= css_dest %>' : ['<%= css_src %>']
+        }
+      }
     },
 
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js'],
-    },
+      methods : ['test/cache_breaker_methods_test.js']
+    }
 
   });
 
@@ -57,7 +98,14 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'cache_breaker', 'nodeunit']);
+  grunt.registerTask('test', [
+    'clean',
+    'cache_breaker:js',
+    'cache_breaker:css',
+    'cache_breaker:js_src_error',
+    'cache_breaker:js_asset_error',
+    'nodeunit:tests'
+  ]);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

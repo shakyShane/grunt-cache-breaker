@@ -1,7 +1,11 @@
 'use strict';
 
 var grunt = require('grunt');
+var testMethods = require('./test_methods.js');
 
+var log = function(msg) {
+  console.log ('\n\n' + msg + '\n');
+};
 /*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
@@ -27,17 +31,31 @@ exports.cache_breaker = {
     // setup here if necessary
     done();
   },
-  default_options: function(test) {
+  task: function(test) {
+
+    var types = ['js', 'css'];
+
+    test.expect(types.length);
+
+    types.forEach(function(item){
+
+      var actual = grunt.file.read( 'tmp/' + item );
+      var expected = grunt.file.read( 'test/expected/' + item );
+
+      test.notEqual( testMethods.testContainsRel( actual, '"' ), null );
+
+    });
+
+    test.done();
+  },
+  errors : function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
+    // Error should be thrown
+    // No file should be overwritten/written
+    var fileExists = grunt.file.exists( 'tmp/js_error' );
+    test.equal( fileExists, false );
 
-    var regex = new RegExp('.js\\?rel=(\\d.+)(?=")');
-    var tester = actual.match(regex);
-    var tmpTest = tester.length > 0;
-
-    test.equal( tmpTest, true );
     test.done();
   }
 };
