@@ -79,7 +79,7 @@ module.exports = function(grunt) {
 
   };
 
-  grunt.registerMultiTask('cache_breaker', 'Add a timestamp to a url string', function() {
+  grunt.registerMultiTask('cachebreaker', 'Add a timestamp to a url string', function() {
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({

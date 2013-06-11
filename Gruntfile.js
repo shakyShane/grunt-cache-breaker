@@ -41,14 +41,14 @@ module.exports = function(grunt) {
     },
 
     // The task
-    cache_breaker: {
+    cachebreaker: {
       js: {
         options: {
           asset_url : '<%= js_dist_file %>',
           remove   : 'public'
         },
         files: {
-          '<%= js_dest %>': ['<%= js_src %>']
+          '<%= js_dest %>': '<%= js_src %>'
         }
       },
       js_src_error : {
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
           remove   : 'public'
         },
         files   : {
-          '<%= js_dest_error %>' : ['test/fixtures/js_file_error'] /** source file does not exist **/
+          '<%= js_dest_error %>' : 'test/fixtures/js_file_error' /** source file does not exist **/
         }
       },
       js_asset_error : {
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
           remove   : 'public'
         },
         files   : {
-          '<%= js_dest_error %>' : ['test/fixtures/js_error']
+          '<%= js_dest_error %>' : 'test/fixtures/js_error'
         }
       },
       css : {
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
           remove   : 'public'
         },
         files   : {
-          '<%= css_dest %>' : ['<%= css_src %>']
+          '<%= css_dest %>' : '<%= css_src %>'
         }
       }
     },
@@ -100,10 +100,10 @@ module.exports = function(grunt) {
   // plugin's task(s), then test the result.
   grunt.registerTask('test', [
     'clean',
-    'cache_breaker:js',
-    'cache_breaker:css',
-    'cache_breaker:js_src_error',
-    'cache_breaker:js_asset_error',
+    'cachebreaker:js',
+    'cachebreaker:css',
+    'cachebreaker:js_src_error',
+    'cachebreaker:js_asset_error',
     'nodeunit:tests'
   ]);
 
