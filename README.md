@@ -31,7 +31,7 @@ In it's simplest form (seen above), you can use the cache-breaker to replace a f
 
 **Alternatively**
 
-If you just want to overwrite the same file (that's how I use it), simple pass the same filepath
+If you just want to overwrite the same file (that's how I use it), simply pass the same filepath
 ```js
 cachebreaker : {
   js: {
@@ -45,7 +45,8 @@ cachebreaker : {
 }
 ```
 
-*** Options Explained ***
+**Options Explained**
+
 `options.asset_url` - this should be EXACTLY as your asset url appears in your html, it's what get replaced!
 
 `files` - destination & source - these are the paths to the html files that hold your asset urls. **Note:** These should be relative to your Gruntfile.js, (not a url like the asset_url)
