@@ -1,5 +1,13 @@
 # grunt-cache-breaker
 
+    // Turn these : 
+    <script src="/js/dist/combined.min.js"></script>
+    <link href="/css/style.css"></link>
+
+    // Into these :
+    <script src="/js/dist/combined.min.js?rel=123456"></script>
+    <link href="/css/style.css?rel=123456"></link>
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
