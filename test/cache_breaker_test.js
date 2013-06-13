@@ -49,7 +49,7 @@ exports.cache_breaker = {
     test.done();
   },
   errors : function(test) {
-    test.expect(1);
+    test.expect( 1 );
 
     // Error should be thrown
     // No file should be overwritten/written

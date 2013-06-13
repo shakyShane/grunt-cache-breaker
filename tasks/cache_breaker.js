@@ -9,6 +9,36 @@
 'use strict';
 
 /**
+
+Usage :
+
+  cachebreaker : {
+    css : {
+      asset_url : '/asset/url.min.js',
+      files : {
+        src : ['path/1.php', 'path/1.html']
+      }
+    },
+  }
+  cachebreaker : {
+    css : {
+      asset_url : '/asset/url.min.js',
+      files : {
+        src : 'path/to/single/file.html'
+      }
+    },
+  }
+  cachebreaker : {
+    css : {
+      asset_url : '/asset/url.min.js',
+      file : 'path/to/single/file.html'
+    },
+  }
+
+ */
+
+
+/**
  * Strip unwanted path info from the start of a string
  * @param {String} filename
  * @param {String} prefix
@@ -41,40 +71,77 @@ var msgs = {
     return 'Asset URL in "' + path + '" has been updated to break the cache.';
   },
   errors : {
-    string       : 'Could not find the asset url to replace',
+    string       : function(path) {
+      return 'Found the file: "' + path + '", but I couldn\'t find the Asset Url to replace in it. Please check your config.' ;
+    },
     file_write   : 'Could not write the file!',
-    file_find    : 'Could not find the source file for this task!'
+    file_find    : 'Could not find the source file for this task! ( Tip : the path to this file should be RELATIVE to Grunt.js )',
+    config : function(prop) {
+     return  'Sorry, your config is invalid. Please ensure you provide the `'+prop+'` property';
+    },
+    generic : 'Sorry, there was an unknown problem. Check all your config properties.'
   }
 };
 
 module.exports = function(grunt) {
 
   /**
-   *
+   * Console.log an error - nicer than exceptions in command line
+   * @param {string} msg
+   * @returns {*}
+   */
+  var e = function( msg ) {
+    return grunt.log.error( 'Error : '.red + msg.yellow );
+  };
+
+  /**
+   * Console.log an error
+   * @param { string } msg
+   * @returns {*}
+   */
+  var s = function( msg ) {
+    return grunt.log.success( 'Success : '.green + msg.cyan );
+  };
+
+  /**
+   * @param {string} src
+   * @param {string} dest
    * @param {object} options
-   * @param f
+   * @returns {*}
+   */
+  var processFile = function( src, dest, options ) {
+
+    if( grunt.file.exists( src ) ) {
+      return ( breakCache( options, { src : src, dest : dest } ) );
+    } else {
+      return e( msgs.errors.file_find );
+    }
+
+  };
+
+  /**
+   * @param {object} options
+   * @param {grunt.file} f
    * @returns {string}
    */
   var breakCache = function( options, f ) {
 
     var data = grunt.file.read( f.src );
-
     var cleanUrl   = removePrefixes( options.asset_url, options.remove ),
           regex    = makeTagRegex( cleanUrl ),
           url      = makeNewUrl( cleanUrl ),
           match    = data.match( regex ),
-          newData, write;
+          newData;
 
       if ( match !== null ) {
         newData  = data.replace( regex, url );
-        write    = grunt.file.write( f.dest, newData );
-        if ( write ) {
-          return grunt.log.success( msgs.success( f.dest ) );
+        if ( grunt.file.write( f.dest, newData ) ) {
+          return s( msgs.success( f.src ) );
         } else {
-          return grunt.log.error( msgs.errors.file_write );
+          return e( msgs.errors.file_write );
         }
       } else {
-        return grunt.log.error( msgs.errors.string );
+        return e( msgs.errors.string( f.src ) );
       }
 
   };
@@ -86,19 +153,42 @@ module.exports = function(grunt) {
         remove : 'app' // default
     });
 
-    // Iterate over all specified file groups.
-    this.files.forEach( function(f) {
+    if( !this.data.asset_url ) {
+      return e( msgs.errors.config('asset_url') );
+    }
 
-      if( typeof f.src[0] !== 'undefined' ) {
-        return breakCache( options, f );
-      } else {
-        return grunt.log.error( msgs.errors.file_find );
-      }
+    if( !this.data.file && this.files.length < 1) {
+      return e( msgs.errors.config('file or files') );
+    }
 
-    });
+    // Make asset_url always availble to options.
+    options.asset_url = this.data.asset_url;
+
+    // An array passed to [file]
+    if ( Array.isArray(this.data.file) ) {
+      return this.data.file.forEach( function( path ) {
+        return processFile( path, path, options );
+      });
+    }
+
+    // A String passed to [file]
+    if ( typeof this.data.file === 'string' ) {
+      return processFile( this.data.file, this.data.file, options);
+    }
+
+//    If an array of files specified
+//    Note : Not using this.files to allow an easier syntax in the config.
+//    Pull request submitted to Grunt to allow source-only file arrays
+    if ( this.files ) {
+      return this.files.forEach(function(f) {
+        return processFile( f.src[0], f.dest,  options );
+      });
+    }
+
+    // Error if this point is reached.
+    return e( msgs.errors.generic );
 
   });
-
 };
 
 module.exports.removePrefixes  = removePrefixes;

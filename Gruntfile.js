@@ -42,40 +42,41 @@ module.exports = function(grunt) {
 
     // The task
     cachebreaker: {
+
       js: {
-        options: {
-          asset_url : '<%= js_dist_file %>',
-          remove   : 'public'
-        },
+        asset_url : '<%= js_dist_file %>',
         files: {
-          '<%= js_dest %>': '<%= js_src %>'
+          '<%= js_dest %>' : '<%= js_src %>'
+        },
+        options: {
+          remove   : 'public'
         }
       },
       js_src_error : {
-        options : {
-          asset_url : '<%= js_dist_file %>',
-          remove   : 'public'
+        asset_url : '<%= js_dist_file %>',
+        files : {
+          '<%= js_dest_error %>' : 'test/fixtures/js_file_error' /** source file error **/
         },
-        files   : {
-          '<%= js_dest_error %>' : 'test/fixtures/js_file_error' /** source file does not exist **/
+        options : {
+          remove   : 'public'
         }
       },
       js_asset_error : {
-        options : {
-          asset_url : '/asset/url/incorrect', /** asset url is incorrect **/
-          remove   : 'public'
-        },
+        asset_url : '/asset/url/incorrect', /** asset url is incorrect **/
         files   : {
           '<%= js_dest_error %>' : 'test/fixtures/js_error'
+        },
+        options : {
+          remove   : 'public'
         }
       },
       css : {
-        options : {
-          asset_url : '<%= css_dist_file %>',
-          remove   : 'public'
-        },
+        asset_url : '<%= css_dist_file %>',
         files   : {
           '<%= css_dest %>' : '<%= css_src %>'
+        },
+        options : {
+          remove   : 'public'
         }
       }
     },
@@ -102,7 +103,6 @@ module.exports = function(grunt) {
     'clean',
     'cachebreaker:js',
     'cachebreaker:css',
-    'cachebreaker:js_src_error',
     'cachebreaker:js_asset_error',
     'nodeunit:tests'
   ]);

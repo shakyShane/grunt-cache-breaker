@@ -1,7 +1,7 @@
 {
   "name": "grunt-cache-breaker",
   "description": "Simple cache-breaker, appends a timestamp to a give asset url",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "homepage": "https://github.com/shakyshane/grunt-cache-breaker",
   "author": {
     "name": "Shane Osbourne",

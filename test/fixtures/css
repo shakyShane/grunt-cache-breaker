@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?rel=1371150386058">
   <link rel=icon href="/favicon2.ico"/>
   <!--[if IE 8]><link rel="stylesheet" href="/css/ie.css"><![endif]-->
 

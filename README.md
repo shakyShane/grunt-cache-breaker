@@ -1,6 +1,6 @@
 # grunt-cache-breaker
 
-```js
+
     // Turn these : 
     <script src="/js/dist/combined.min.js"></script>
     <link href="/css/style.css"></link>
@@ -8,7 +8,7 @@
     // Into these :
     <script src="/js/dist/combined.min.js?rel=123456"></script>
     <link href="/css/style.css?rel=123456"></link>
-```
+
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -26,40 +26,23 @@ And then add this to your list of tasks
 
 ```js
 cachebreaker : {
-  js: {
-    options: {
-      asset_url : '/js/path/to/my/file.js'
+    js: {
+      asset_url : '/js/dist/combined.min.js',
+      files: {
+        src : 'app/views/layout/master.html'
+      },
     },
-    files: {
-      'app/destination.html' : 'app/source.html'
-    }
-  },
 }
 ```
-## The "cache_breaker" task
+## The "cachebreaker" task
 In it's simplest form (seen above), you can use the cache-breaker to replace a fixed url. This will look at the file `app/source.html`, find your `asset_url` within it, & then re-write the entire file to `app/destination.html`
 
-**Alternatively**
-
-If you just want to overwrite the same file (that's how I use it), simply pass the same filepath
-```js
-cachebreaker : {
-  js: {
-    options: {
-      asset_url : '/js/path/to/my/file.js'
-    },
-    files: {
-      'app/source.html' : 'app/source.html'
-    }
-  },
-}
-```
 
 **Options Explained**
 
 `options.asset_url` - this should be EXACTLY as your asset url appears in your html, it's what get replaced!
 
-`files` - destination & source - these are the paths to the html files that hold your asset urls. **Note:** These should be relative to your Gruntfile.js, (not a url like the asset_url)
+`files.src` - just provide the path to your *html|php|rb* file here. You can provide a `dest` option too if you would like to save the file elsewhere.
 
 ## A More Realistic Example.
 Grunt is all about automating things, so I'd be more inclined to use this as a final step to a build process. The build would generate the filename dynamically and then the timestamp would be tacked on the end. You can imagine a nice setup like this.
@@ -71,15 +54,15 @@ js_all            : '<%= js_dir %>/dist/combined',
 js_dist_file      : '<%= js_all %>.clean.min.js', /** build steps would generate this file **/
 
 cachebreaker : {
-  js: {
-    options: {
-      asset_url : '<%= js_dist_file %>', 
-      remove    : 'public' 
+    js: {
+        asset_url : '<%= js_dist_file %>',
+        files: {
+            src : 'app/views/layout/master.html'
+        },
+        options : {
+            remove : 'public', // remove any unwanted path fragments
+        },
     },
-    files: {
-      'app/source.html' : 'app/source.html'
-    }
-  },
 }
 ```
 
@@ -107,19 +90,30 @@ css_dist_file : '<%= css_dir %>/style.css', /** build steps would generate this 
 
 cachebreaker : {
   css: {
+    asset_url : '<%= css_dist_file %>',
+    files: {
+      src : '<%= php_template %>',
+    },
     options: {
-      asset_url : '<%= css_dist_file %>', 
       remove    : 'public' 
     },
-    files: {
-      '<%= php_template %>' : '<%= php_template %>'
-    }
   },
 }
 ```
 
 ```shell
-grunt cachebreaker:js
+grunt cachebreaker:css
+```
+
+##Optional
+Most of the time you will just be updating a single file with each task, so I've enabled a a `file` property to save a few lines in your Gruntfile.js
+```js
+cachebreaker : {
+    js: {
+      asset_url : '/js/dist/combined.min.js',
+      file: 'app/views/layout/master.html',
+    },
+}
 ```
 
 ## Contributing
