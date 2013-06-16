@@ -35,14 +35,14 @@ cachebreaker : {
 }
 ```
 ## The "cachebreaker" task
-In it's simplest form (seen above), you can use the cache-breaker to replace a fixed url. This will look at the file `app/source.html`, find your `asset_url` within it, & then re-write the entire file to `app/destination.html`
+In it's simplest form (seen above), you can use the cache-breaker to replace a fixed url. This will look at the file `app/source.html`, find your `asset_url` within it & then append a timestamp. It will also overwrite an existing timestamp if one exists.
 
 
 **Options Explained**
 
-`options.asset_url` - this should be EXACTLY as your asset url appears in your html, it's what get replaced!
+`asset_url` - this should be EXACTLY as your asset url appears in your html, it's what get replaced!
 
-`files.src` - just provide the path to your *html|php|rb* file here. You can provide a `dest` option too if you would like to save the file elsewhere.
+`files.src` - just provide the path to your *html|php|erb* file here (the file that contains the asset url above). You can also provide an array here if you would like to replace the url in more than 1 file.
 
 ## A More Realistic Example.
 Grunt is all about automating things, so I'd be more inclined to use this as a final step to a build process. The build would generate the filename dynamically and then the timestamp would be tacked on the end. You can imagine a nice setup like this.
@@ -69,7 +69,7 @@ cachebreaker : {
 With this type of setup, you could do something along the lines of this (with the correct config for concat & uglify, of course)
 
 ```shell
-grunt.registerTask( 'js-build', ['concat:js', 'uglify:js', cachebreaker:js'] );
+grunt.registerTask( 'js-build', ['concat:js', 'uglify:js', 'cachebreaker:js'] );
 ```
 
 **Note**
@@ -106,7 +106,7 @@ grunt cachebreaker:css
 ```
 
 ##Optional
-Most of the time you will just be updating a single file with each task, so I've enabled a a `file` property to save a few lines in your Gruntfile.js
+Most of the time you will just be updating a single file with each task, so I've enabled a `file` property to save a few lines in your Gruntfile.js
 ```js
 cachebreaker : {
     js: {
