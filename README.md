@@ -52,7 +52,7 @@ cachebreaker : {
     js: {
       asset_url : '/js/dist/combined.min.js',
       files: {
-        src : []'app/views/*.html']
+        src : ['app/views/*.html']
       }
     }
 }
