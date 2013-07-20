@@ -25,6 +25,7 @@ Once the plugin has been installed, add this to your Gruntfile.js
 And then add this to your list of tasks
 
 ```js
+// Single file
 cachebreaker : {
     js: {
       asset_url : '/js/dist/combined.min.js',
@@ -32,6 +33,28 @@ cachebreaker : {
         src : 'app/views/layout/master.html'
       },
     },
+}
+```
+```js
+// Array of single files
+cachebreaker : {
+    js: {
+      asset_url : '/js/dist/combined.min.js',
+      files: {
+        src : ['app/views/layout/master.html', 'app/views/account.php']
+      },
+    },
+}
+```
+```js
+// Multiple files (glob)
+cachebreaker : {
+    js: {
+      asset_url : '/js/dist/combined.min.js',
+      files: {
+        src : []'app/views/*.html']
+      }
+    }
 }
 ```
 ## The "cachebreaker" task

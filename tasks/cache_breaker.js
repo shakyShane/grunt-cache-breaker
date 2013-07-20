@@ -1,6 +1,6 @@
 /*
- * cache-breaker
- * https://github.com/shanenew/breaker
+ * grunt-cache-breaker
+ * https://github.com/shakyShane/grunt-cache-breaker
  *
  * Copyright (c) 2013 Shane Osbourne
  * Licensed under the MIT license.
@@ -25,6 +25,14 @@ Usage :
       asset_url : '/asset/url.min.js',
       files : {
         src : 'path/to/single/file.html'
+      }
+    },
+  }
+  cachebreaker : {
+    css : {
+      asset_url : '/asset/url.min.js',
+      files : {
+        src : 'path/to/many/files/*.html'
       }
     },
   }
@@ -176,12 +184,16 @@ module.exports = function(grunt) {
       return processFile( this.data.file, this.data.file, options);
     }
 
-//    If an array of files specified
-//    Note : Not using this.files to allow an easier syntax in the config.
-//    Pull request submitted to Grunt to allow source-only file arrays
-    if ( this.files ) {
+    // Files key used
+    if (this.files) {
       return this.files.forEach(function(f) {
-        return processFile( f.src[0], f.dest,  options );
+        if (f.src instanceof Array) {
+          return f.src.forEach(function (fv) {
+            return processFile(fv, fv, options);
+          });
+        } else {
+          return processFile( f.src[0], f.dest,  options );
+        }
       });
     }
 
