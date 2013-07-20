@@ -181,6 +181,11 @@ module.exports = function(grunt) {
 //    Pull request submitted to Grunt to allow source-only file arrays
     if ( this.files ) {
       return this.files.forEach(function(f) {
+        if( f.src instanceof Array ) {
+          return f.src.forEach(function(fv) {
+            return processFile( fv, f.dest,  options );
+          });
+        }
         return processFile( f.src[0], f.dest,  options );
       });
     }
