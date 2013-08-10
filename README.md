@@ -1,7 +1,7 @@
 # grunt-cache-breaker
 
 
-    // Turn these : 
+    // Turn these :
     <script src="/js/dist/combined.min.js"></script>
     <link href="/css/style.css"></link>
 
@@ -22,7 +22,7 @@ Once the plugin has been installed, add this to your Gruntfile.js
 
     grunt.loadNpmTasks('grunt-cache-breaker');
 
-And then add this to your list of tasks
+And then add one of the following to your list of tasks
 
 ```js
 // Single file
@@ -65,7 +65,7 @@ In it's simplest form (seen above), you can use the cache-breaker to replace a f
 
 `asset_url` - this should be EXACTLY as your asset url appears in your html, it's what get replaced!
 
-`files.src` - just provide the path to your *html|php|erb* file here (the file that contains the asset url above). You can also provide an array here if you would like to replace the url in more than 1 file.
+`files.src` - just provide the path to your *html,php,erb* file here (the file that contains the asset url above). You can also provide an array here if you would like to replace the url in more than 1 file.
 
 ## A More Realistic Example.
 Grunt is all about automating things, so I'd be more inclined to use this as a final step to a build process. The build would generate the filename dynamically and then the timestamp would be tacked on the end. You can imagine a nice setup like this.
@@ -118,7 +118,7 @@ cachebreaker : {
       src : '<%= php_template %>',
     },
     options: {
-      remove    : 'public' 
+      remove    : 'public'
     },
   },
 }
