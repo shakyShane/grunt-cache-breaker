@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Guernsey Photographer | Photographic Studio in Guernsey  Homepage - Your Moments Captured Photography - </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel=icon href="/favicon2.ico"/>
+  <!--[if IE 8]><link rel="stylesheet" href="/css/ie.css"><![endif]-->
+
+  <!--[if IE 7]>
+  <link rel="stylesheet" href="/css/ie7.css">
+  <![endif]-->
+
+  <script src="/js/vendor/modernizr/modernizr-2.6.2.min.js"></script>
+  </head>
+<body>
+
+<!--[if lt IE 7]>
+<p class="chromeframe">
+  You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+  improve your experience of not only this site, but the entire internet.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="wrapper gw">
+  <div class="page-top full-width palm-padding">
+    <div class="inline-block fl">
+              <a href="/logout"><span class="icon-unlocked"></span> Logout</a>
+
+                | <a href="/admin"> Admin</a>
+
+    </div>
+    <div class="inline-block fr">
+      <div class="contact-toggle">
+        <a href="#" class="trigger" data-target="contactInfo" data-follow="false">Contact <span class="hide--palm">Info <span class="icon-phone"></span></span></a>
+      </div>
+    </div>
+      <div class="text-reduce contact-info inline-block fr" id="contactInfo">
+        <a href="mailto:yourmomentscaptured@me.com">
+          <b>E:</b> yourmomentscaptured@me.com
+        </a>
+        <a href="tel:720007"> <b>T:</b> 720007</a>
+        <a href="tel:07781104851"><b>M:</b> 07781 104851</a>
+        <a href="/contact#send_a_message" class="go hide--lap hide--desk">Send a message online</a>
+      </div>
+    <!-- end Header -->
+  </div>
+  <div id="loginForm" class="login-form">
+  <div class="form-wrapper">
+    <form action="/login" method="POST" id="login">
+      <p class="text-reduce"><strong>Note:</strong> If you had a photo-shoot before 14th Feb 2013 &amp; would like access to your photos,
+        please <a href="/contact" class="go">contact me</a> </p>
+      <p class="message collapsed"></p>
+      <label for="login_email" class="">Email:</label>
+      <p><input id="login_email" type="email" name="username" placeholder="..."></p>
+      <label for="password" class="">Password:</label>
+      <p><input id="password" type="password" name="password" placeholder="..."></p>
+      <p>
+        <input type="hidden" name="csrf_token" value="5W9rf21guYzHczZbP4hE7V2EyhyMkRBtZynGiSLQ">        <input type="submit" value="Log in" class="action-btn fr submit" id="login_submit">
+        <button class="action-btn cancel fl close-any" data-target="loginForm">Cancel</button>
+      </p>
+
+    </form>
+  </div>
+  <span class="inline-btn close">X</span>
+</div>  <div role="main" class="g one-whole body-content">
+
+        <header class="gw full-bleed header">
+  <div class="logo-wrapper fl">
+    <div class="floral">
+    </div>
+    <h1 class="brand logo">
+      Your Moments Captured Photography - Guernsey
+    </h1>
+
+    <a href="" class="palm-menu trigger" data-target="mainNav" data-follow="false">
+      <span class="icon-list"></span>
+    </a>
+  </div>
+  <nav class="nav-wrapper fl" id="mainNav">
+    <span class="inline-btn close main-nav-close">X</span>
+
+    <ul role="nav" class="nav nav--banner main-nav">
+  <li>
+    <a href="/">Home</a>
+    <span class="pipe">|</span>
+  </li>
+  <li>
+        <a href="/admin"> Admin</a>
+        <span class="pipe">|</span>
+  </li>
+  <li>
+    <a href="#" class="trigger" data-target="mainSubnav" data-follow="false" title="Click to show Menu">Services
+      <b class="caret"></b>
+    </a>
+    <ul class="secondSubnav">
+      <li><a href="/weddings">Wedding Photography</a></li>
+      <li><a href="/portraits">Portrait Photography</a></li>
+      <li><a href="/events">Event Photography</a></li>
+      <li><a href="http://www.guernseyphotobooth.co.uk" class="go" title="Go to the Website">Photo Booth Hire</a></li>
+      <li><a href="/studio">Studio</a></li>
+      <li class="sub-menu-close"><a href="#" class="close-any" data-target="mainSubnav">Close X</a></li>
+    </ul>
+    <span class="pipe">|</span>
+  </li>
+  <li><a href="/contact">Contact Us</a></li>
+</ul>  </nav>
+</header>    <div style="position: relative">
+  <div id="mainSubnav" class="sub-nav hidden">
+    <span class="inline-btn close close-any" data-target="mainSubnav">X</span>
+    <div class="gw">
+      <div class="g one-half palm-one-whole">
+
+        <a href="/weddings" class="lead go">Wedding Photography</a>
+        <ul class="modal-list">
+          <li><a href="/weddings#galleries" class="go">Galleries</a></li>
+          <li><a href="/weddings#more_info" class="go">Information</a></li>
+          <li><a href="/weddings#prices" class="go">Prices</a></li>
+        </ul>
+
+        <a href="/portraits" class="lead go">Portrait Photography</a>
+        <ul class="modal-list">
+          <li><a href="/portraits#galleries" class="go">Galleries</a></li>
+          <li><a href="/portraits" class="go">Prices</a></li>
+          <li><a href="/portraits#packages" class="go">Packages</a></li>
+        </ul>
+
+        <a href="/events" class="lead go">Event Photography</a>
+        <ul class="modal-list">
+          <li><a href="/events#galleries" class="go">Galleries</a></li>
+          <li><a href="/events" class="go">Prices</a></li>
+        </ul>
+      </div>
+      <div class="g one-half palm-one-whole">
+        <a href="/studio" class="lead recede go">Our Studio</a>
+        <ul class="modal-list">
+          <li><a href="/studio" class="go">Prices</a></li>
+          <li><a href="/giftvoucher" class="go">NEW - Gift Vouchers</a></li>
+        </ul>
+
+        <a href="/contact" class="lead recede go">Contact Us</a>
+        <ul class="modal-list">
+          <li><a href="/contact" class="go">How to Find us</a></li>
+          <li><a href="/contact" class="go">Contact Information</a></li>
+          <li><a href="/contact#send_a_message" class="go">Send us a Message</a></li>
+        </ul>
+
+        <span class="lead recede">Links</span>
+        <ul class="modal-list">
+          <li><a href="http://www.guernseyphotobooth.co.uk/" class="go">Guernsey Photo Booth</a></li>
+          <li><a href="http://www.studio31.gg" class="go">Studio 31 - Online Printing</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    </ul>
+  </div>
+</div>
+
+
+        <div class="breadcrumb-wrapper cf">
+      <ol class="nav breadcrumb">
+    <p><span class="text-reduce text-dull">Find us at: </span>31 Mill Street, St Peter Port, Guernsey. GY1 1HG</p>
+  </ol>    </div>
+
+
+        <!-- Hero unit -->
+<div class="gw full-bleed">
+  <div class="hero-image">
+
+
+    <img src="/uploads/pages/517708767_hero01.jpg" alt="Example of Guernsey Photographer, Your Moments Captured">
+
+    <div class="hero-text">
+      <h2 class="hero-heading-text"><b>Your Moments Captured</b> is a professional <em>photography</em> studio in <strong>Guernsey</strong> offering a range of photographic services catering for
+      <strong>weddings</strong>, <strong>portraits</strong> and all types of <strong>events</strong>.</h2>
+
+      <p>Whether it’s a family portrait or a special event, we take great pride in our ability to create <strong>photographs</strong> you
+      will want to cherish.</p>
+    </div>
+  </div>
+</div>
+
+<div class="floral-divide">
+</div>
+<div class="gw full-bleed palm-center grey-grad" id="galleries">
+  <div class="g one-whole push-right text-center">
+    <br>
+    <br>
+    <h3>Your Moments Captured</h3>
+    <p class="text-dull">Professional <strong>Portrait</strong>, <strong>Wedding</strong> &amp; <strong>Event</strong> Photography in <strong>Guernsey</strong></p>
+  </div>
+</div>
+<!-- end Hero -->
+<div class="gw large-boxes">
+  <div class="g one-quarter portable-one-half box-drop">
+    <a class="box" href="/portraits">
+      <img src="/img/boxes/portrait01.jpg" alt="">
+
+      <p class="banner-text"><span class="icon-pictures"></span> Portraits<br>
+
+      </p>
+    </a>
+  </div>
+  <div class="g one-quarter portable-one-half box-drop">
+    <a class="box" href="/weddings">
+      <img src="/img/boxes/weddings01.jpg" alt="">
+      <p class="banner-text"><span class="icon-pictures"></span> Weddings<br>
+      </p>
+    </a>
+  </div>
+  <div class="g one-quarter portable-one-half box-drop">
+    <a class="box" href="/events">
+      <img src="/img/boxes/events01.jpg" alt="">
+
+      <p class="banner-text"><span class="icon-pictures"></span> Events<br>
+
+      </p>
+    </a>
+  </div>
+  <div class="g one-quarter portable-one-half box-drop">
+    <a class="box" href="/studio">
+      <img src="/img/boxes/studio01.jpg" alt="">
+
+      <p class="banner-text"><span class=""></span> Studio<br>
+      </p>
+    </a>
+  </div>
+</div><blockquote class="quote1">
+  <p>You don't take a photograph, you make it</p>
+  <b class="source">Ansel Adams</b>
+</blockquote>
+<br/>
+<!--<div class="floral-divide clear"></div>-->
+<!--  <br/>-->
+
+        <footer class="gw full-bleed footer purple-grad">
+  <div class="g palm-one-whole one-half connect double-padding">
+    <p>Contact us</p>
+
+    <p><a href="mailto:yourmomentscaptured@me.com" class="text-reduce"><b>E:</b> yourmomentscaptured@me.com</a></p>
+
+    <p><a href="tel:720007" class="text-reduce"><b>T:</b> 720007</a></p>
+
+    <p><a href="tel:07781 104851" class="text-reduce"><b>M:</b> 07781 104851</a></p>
+
+    <p><a href="/contact#send_a_message" class="text-reduce go"><b>W:</b> Send a message online</a></p>
+  </div>
+  <div class="g palm-one-whole one-half text-right connect double-padding">
+
+    <p>Connect with us</p>
+    <p><a href="https://www.facebook.com/pages/Your-Moments-Captured-Photography/124918154190373" class="icon facebook text-reduce go">Like us on facebook <span
+        class="icon-facebook"></span></a></p>
+    <br>
+    <p>Read our Blog</p>
+
+    <p><a href="" class="feed go text-reduce">Blog <span class="icon-feed"></span></a></p>
+  </div>
+<!--  <div class="gw cf">-->
+    <div class="g full-width push-right text-dull">
+      <p class="text-center">&copy; 2013</p>
+
+      <p class="text-center">Your Moments Captured Photography</p>
+
+      <p class="text-center text-reduce">31 Mill Street, St Peter Port, Guernsey. GY1 1HG</p>
+      <br>
+    </div>
+<!--  </div>-->
+</footer>  </div><!-- end Body wrapper -->
+</div><!-- End main wrapper -->
+
+<div class="full-width dev-branding">
+  <p class="text-center text-reduce text-white">Responsive Web Design & Development - <a
+      href="mailto:shane.osbourne8@gmail.com">Shane Osbourne</a>
+  </p>
+</div>
+
+<!-- Zepto with fallback to jQuery -->
+<script>
+//  document.write('<script src=' +
+//      ('__proto__' in {} ? '/js/vendor/zepto/zepto.min' : '/js/vendor/jquery/jquery') +
+//      '.js><\/script>')
+</script>
+
+<script src="/js/vendor/jquery/jquery.js"></script>
+
+<!-- DEV -->
+<!-- compiled scripts for production env -->
+<script src="/js/dist/combined.min_v1.0.0_.js"></script>
+<script>
+  require(['Public'], function(Public){});
+</script>
+
+
+<!-- Google Analytics: -->
+<script>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38606460-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

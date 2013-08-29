@@ -29,11 +29,21 @@ var log = function(msg) {
 exports.cache_breaker = {
   setUp: function(done) {
     // setup here if necessary
+
+    // move js, css, js_error from fixtures into tmp/
+    // as it's not done for us, i guess the dest:src is broken
+    // in the task config.files
+    var files = ['js', 'css', 'js_version' ];
+    grunt.file.mkdir('tmp');
+    files.forEach(function(f) {
+      grunt.file.copy('test/fixtures/'+f, 'tmp/'+f);
+    });
+
     done();
   },
   task: function(test) {
 
-    var types = ['js', 'css'];
+    var types = ['js', 'css', 'js_version' ];
 
     test.expect(types.length);
 
