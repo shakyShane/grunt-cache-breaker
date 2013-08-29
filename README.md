@@ -9,6 +9,14 @@
     <script src="/js/dist/combined.min.js?rel=123456"></script>
     <link href="/css/style.css?rel=123456"></link>
 
+    // Or these :
+    <script src="/js/dist/combined.min_v1.2.3_.js"></script>
+    <link href="/css/style_v1.2.3_.css"></link>
+
+    // Or these :
+    <script src="/js/dist/combined.min.js?rel=v1.2.3"></script>
+    <link href="/css/style.css?rel=1.2.3"></link>
+
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -66,6 +74,10 @@ In it's simplest form (seen above), you can use the cache-breaker to replace a f
 `asset_url` - this should be EXACTLY as your asset url appears in your html, it's what get replaced!
 
 `files.src` - just provide the path to your *html,php,erb* file here (the file that contains the asset url above). You can also provide an array here if you would like to replace the url in more than 1 file.
+
+`tag` - optional, a version tag to add to replaced asset urls
+
+`ext` - optional, file extension of the replaced asset url - required to insert `tag` into a filename, rather than append it as a query string.
 
 ## A More Realistic Example.
 Grunt is all about automating things, so I'd be more inclined to use this as a final step to a build process. The build would generate the filename dynamically and then the timestamp would be tacked on the end. You can imagine a nice setup like this.
@@ -139,6 +151,21 @@ cachebreaker : {
 }
 ```
 
+## Cachebusting file name
+You can insert a version tag into a file name by including the `tag` and `ext` options.  This is useful if you're using a backend which is very rigid with url parameters (like the one I'm using...).
+```js
+cachebreaker: {
+  options: {
+    tag: '_v<%= pkg.name %>_'
+  },
+  js: {
+    ext: 'js',
+    asset_url: '/assets/js/jsfile.min.js',
+    file: 'app/views/layout/master.html'
+  }
+}
+```
+Which makes `jsfile.min.js` become `jsfile.min_v1.0.0_.js` in `master.html`
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
