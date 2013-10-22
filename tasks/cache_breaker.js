@@ -188,11 +188,16 @@ module.exports = function(grunt) {
     if (this.files) {
       return this.files.forEach(function(f) {
         if (f.src instanceof Array) {
-          return f.src.forEach(function (fv) {
-            return processFile(fv, fv, options);
-          });
-        } else {
-          return processFile( f.src[0], f.dest,  options );
+          if (f.dest && f.dest === "src") {
+            return f.src.forEach(function (fv) {
+              return processFile(fv, fv, options);
+            });
+          } else {
+            if (!f.src[0]) {
+              return e( msgs.errors.file_find );
+            }
+            return processFile( f.src[0], f.dest,  options );
+          }
         }
       });
     }
