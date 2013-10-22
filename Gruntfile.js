@@ -52,6 +52,21 @@ module.exports = function(grunt) {
           remove   : 'public'
         }
       },
+      img: {
+        asset_url : 'images/test.jpg',
+        files: {
+          'tmp/img' : 'test/fixtures/img'
+        }
+      },
+      js_with_existing: {
+        asset_url : '<%= js_dist_file %>',
+        files: {
+          'tmp/js_with_existing' : 'test/fixtures/js_with_existing'
+        },
+        options: {
+          remove   : 'public'
+        }
+      },
       js_src_error : {
         asset_url : '<%= js_dist_file %>',
         files : {
@@ -102,7 +117,9 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'clean',
     'cachebreaker:js',
+    'cachebreaker:js_with_existing',
     'cachebreaker:css',
+    'cachebreaker:img',
     'cachebreaker:js_asset_error',
     'nodeunit:tests'
   ]);

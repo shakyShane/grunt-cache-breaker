@@ -33,15 +33,13 @@ exports.cache_breaker = {
   },
   task: function(test) {
 
-    var types = ['js', 'css'];
+    var types = ['js', 'css', 'img', 'js_with_existing'];
 
     test.expect(types.length);
 
     types.forEach(function(item){
 
       var actual = grunt.file.read( 'tmp/' + item );
-      var expected = grunt.file.read( 'test/expected/' + item );
-
       test.notEqual( testMethods.testContainsRel( actual, '"' ), null );
 
     });
