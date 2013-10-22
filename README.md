@@ -1,4 +1,4 @@
-# grunt-cache-breaker
+# grunt-cache-breaker [![Build Status](https://travis-ci.org/shakyShane/browser-sync.png?branch=master)](https://travis-ci.org/shakyShane/browser-sync)
 
 
     // Turn these :
