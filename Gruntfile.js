@@ -20,6 +20,7 @@ module.exports = function(grunt) {
     css_dist_file : '<%= css_dir %>/style.css',
     js_src        : 'test/fixtures/js',
     js_src_error  : 'test/fixtures/js_error',
+    js_src_version  : 'test/fixtures/js_version',
     css_src       : 'test/fixtures/css',
     js_dest       : 'tmp/js',
     js_dest_error : 'tmp/js_error',
@@ -78,6 +79,17 @@ module.exports = function(grunt) {
         options : {
           remove   : 'public'
         }
+      },
+      js_version: {
+        options: {
+          remove: 'public',
+          tag: '_v1.0.0_',
+          ext: 'js'
+        },
+        asset_url: '<%= js_dist_file %>',
+        files: {
+          src: '<%= js_src_version %>'
+        }
       }
     },
 
@@ -104,6 +116,7 @@ module.exports = function(grunt) {
     'cachebreaker:js',
     'cachebreaker:css',
     'cachebreaker:js_asset_error',
+    'cachebreaker:js_version',
     'nodeunit:tests'
   ]);
 
