@@ -121,6 +121,7 @@ module.exports = function(grunt) {
     'cachebreaker:css',
     'cachebreaker:img',
     'cachebreaker:js_asset_error',
+    'cachebreaker:js_src_error',
     'nodeunit:tests'
   ]);
 
