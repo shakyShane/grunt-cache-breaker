@@ -187,15 +187,18 @@ module.exports = function(grunt) {
     // Files key used
     if (this.files) {
       return this.files.forEach(function(f) {
+
+        // is f.src an array with at least 1 item?
         if (f.src instanceof Array && f.src.length) {
+
+          // is the file destination the same as the source?
           if (f.dest && f.dest === "src") {
+
             return f.src.forEach(function (fv) {
               return processFile(fv, fv, options);
             });
+
           } else {
-            if (!f.src[0]) {
-              return e( msgs.errors.file_find );
-            }
             return processFile( f.src[0], f.dest,  options );
           }
         } else {
