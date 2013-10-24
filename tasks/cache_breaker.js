@@ -187,7 +187,7 @@ module.exports = function(grunt) {
     // Files key used
     if (this.files) {
       return this.files.forEach(function(f) {
-        if (f.src instanceof Array) {
+        if (f.src instanceof Array && f.src.length) {
           if (f.dest && f.dest === "src") {
             return f.src.forEach(function (fv) {
               return processFile(fv, fv, options);
@@ -198,6 +198,8 @@ module.exports = function(grunt) {
             }
             return processFile( f.src[0], f.dest,  options );
           }
+        } else {
+          return e( msgs.errors.file_find );
         }
       });
     }
