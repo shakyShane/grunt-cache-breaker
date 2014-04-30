@@ -96,9 +96,9 @@ cachebreaker: {
 ```
 
 ##MD5 hash
-Use the contents of a file to generate a hash instead of a timestamp. Works in all positioned mentioned above.
+Use the contents of a file to generate a hash instead of a timestamp. Works in all positions mentioned above.
 
-This example will creates links like this: `all.min.js?rel=hetweyj332` - which is useful as your templates only change
+This example will create links like this: `all.min.js?rel=hetweyj332` - which is useful as your templates only change
 when the contents of the file change.
 
 ```js
