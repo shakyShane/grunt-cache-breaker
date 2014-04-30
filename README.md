@@ -7,7 +7,7 @@
     <!-- into this -->
     <script src="/js/dist/combined.min.js?rel=123456"></script>
 
-    <!--or this -->
+    <!-- or this -->
     <script src="/js/dist/combined.min.123456.js"></script>
 
     <!-- or this (md5 hash of file contents) -->
@@ -29,7 +29,7 @@ Once the plugin has been installed, add this to your Gruntfile.js
 
 And then add one of the following to your list of tasks
 
-##Examples (requires version 1.0.0 or above)
+##Usage (all examples require version 1.0.0 or above)
 
 **Append timestamps as query strings**
 
