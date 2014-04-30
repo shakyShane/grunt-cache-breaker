@@ -29,7 +29,8 @@ Once the plugin has been installed, add this to your Gruntfile.js
 
 And then add one of the following to your list of tasks
 
-##Usage (all examples require version 1.0.0 or above)
+##Usage
+###(all examples require version 1.0.0 or above)
 
 **Append timestamps as query strings**
 
