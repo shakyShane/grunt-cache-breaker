@@ -1,19 +1,19 @@
 # grunt-cache-breaker [![Build Status](https://travis-ci.org/shakyShane/grunt-cache-breaker.png?branch=master)](https://travis-ci.org/shakyShane/grunt-cache-breaker)
 
 
-    // Turn these :
+    <!-- Turn these -->
     <script src="/js/dist/combined.min.js"></script>
     <link href="/css/style.css"></link>
 
-    // Into these :
+    <!-- Into these -->
     <script src="/js/dist/combined.min.js?rel=123456"></script>
     <link href="/css/style.css?rel=123456"></link>
 
-    // Or these :
+    <!-- Or these -->
     <script src="/js/dist/combined.min.123456.js"></script>
     <link href="/css/style.123456.css"></link>
 
-    // Or these (md5 hash of file contents)
+    <!-- Or these (md5 hash of file contents) -->
     <script src="/js/dist/combined.min.ow23de343.js"></script>
     <link href="/css/style.ow23de343.css"></link>
 
