@@ -159,6 +159,15 @@ cachebreaker: {
 }
 ```
 
+##Options
+
+| Option      | Type            | Default  | Description                          |   |
+|-------------|-----------------|----------|--------------------------------------|---|
+| match       | string|array    | null     |                                      |   |
+| replacement | string|function | "time"   | "time", "md5", or custom function    |   |
+| position    | "string"        | "append" | "append", "filename", "overwrite"    |   |
+| src.path    | "string"        | null     | Path to file to be used for md5 hash |   |
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
