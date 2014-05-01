@@ -44,7 +44,7 @@ module.exports = function (grunt) {
         cachebreaker: {
             js: {
                 options: {
-                    match: 'combined.min.js',
+                    match: ['combined.min.js', 'app.js'],
                     replacement: function () {
                         return "123456";
                     }
