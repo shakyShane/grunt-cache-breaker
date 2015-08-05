@@ -44,26 +44,27 @@ module.exports = function (grunt) {
         cachebreaker: {
             js: {
                 options: {
-                    match: ['combined.min.js', 'app.js'],
+                    match: ['script.js', 'app.js'],
                     replacement: function () {
                         return "123456";
                     }
                 },
                 files: {
-                    '<%= js_dest %>': '<%= js_src %>'
+                    'test/fixtures/query.out.html': ["test/fixtures/query.html"]
                 }
             },
-            jsmd52: {
+            md5: {
                 options: {
-                    match: ['dummy.*.js', 'combined.min.*.js'],
                     replacement: "md5",
-                    position: "overwrite",
-                    src: {
-                        path: "./LICENSE-MIT"
-                    }
+                    match: [
+                        {
+                            'script.js': 'test/fixtures/js/script.js',
+                            'app.js':    'test/fixtures/js/app.js'
+                        }
+                    ]
                 },
                 files: {
-                    'tmp/jsmd5': 'test/fixtures/jsmd5'
+                    'test/fixtures/md5.out.html': ["test/fixtures/query.html"]
                 }
             }
         },
@@ -87,9 +88,7 @@ module.exports = function (grunt) {
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
     grunt.registerTask('test', [
-        'clean',
-        'cachebreaker:js',
-        'cachebreaker:jsmd52',
+        'cachebreaker',
         'nodeunit:tests'
     ]);
 

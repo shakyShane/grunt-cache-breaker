@@ -28,10 +28,11 @@
     "test": "grunt"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1",
+    "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt": "~0.4.1"
+    "lodash": "^3.10.1"
   },
   "keywords": [
     "gruntplugin",
@@ -41,6 +42,7 @@
     "break"
   ],
   "dependencies": {
-    "cache-breaker": "0.0.4"
+    "cache-breaker": "0.0.4",
+    "lodash.clonedeep": "^3.0.2"
   }
 }

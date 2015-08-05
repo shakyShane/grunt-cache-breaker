@@ -1,4 +1,5 @@
 "use strict";
+var _ = require("lodash");
 
 module.exports = function (grunt) {
 
@@ -18,25 +19,41 @@ module.exports = function (grunt) {
                 return grunt.fail.warn("No source files were found.");
             }
 
-            f.src
-                .forEach(function (filepath) {
+            f.src.forEach(function (filepath) {
 
-                    var dest = filepath;
+                var dest = filepath;
 
-                    if (f.dest && f.dest !== "src") {
-                        dest = f.dest;
-                    }
+                if (f.dest && f.dest !== "src") {
+                    dest = f.dest;
+                }
 
-                    var input = grunt.file.read(filepath);
-                    var broken = cb.breakCache(input, options.match, options);
+                var input  = grunt.file.read(filepath);
 
-                    if (broken.length) {
-                        grunt.log.ok("Cache broken in: " + filepath.cyan);
-                        grunt.file.write(dest, broken);
-                    } else {
-                        return grunt.fail.warn("No changes were made.");
-                    }
-                });
+                if (options.replacement === "md5") {
+                    options.match.forEach(function (item) {
+                        if (typeof item === "string") {
+                            input = cb.breakCache(input, item, options);
+                        } else {
+                            var clone = _.cloneDeep(options);
+                            Object.keys(item).forEach(function (key) {
+                                clone.src = {
+                                    path: item[key]
+                                };
+                                input = cb.breakCache(input, key, clone);
+                            });
+                        }
+                    });
+                } else {
+                    input = cb.breakCache(input, options.match, options);
+                }
+
+                if (input.length) {
+                    grunt.log.ok("Cache broken in: " + filepath.cyan);
+                    grunt.file.write(dest, input);
+                } else {
+                    return grunt.fail.warn("No changes were made.");
+                }
+            });
         });
     });
 };

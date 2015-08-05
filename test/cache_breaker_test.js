@@ -32,16 +32,18 @@ exports.cache_breaker = {
     },
     task: function (test) {
 
-        var types = ['js', 'jsmd5'];
+        var types = ['query', 'md5'];
 
         test.expect(types.length);
 
         types.forEach(function (item) {
 
-            var actual   = grunt.file.read('tmp/' + item);
-            var expected = grunt.file.read('test/expected/' + item);
-            test.deepEqual(actual, expected);
+            var out      = 'test/fixtures/' + item + '.out.html';
+            var actual   = grunt.file.read(out);
+            var expected = grunt.file.read('test/fixtures/' + item + '.expected.html');
 
+            grunt.file.delete(out);
+            test.deepEqual(actual, expected);
         });
 
         test.done();
