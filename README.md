@@ -1,18 +1,18 @@
 # grunt-cache-breaker [![Build Status](https://travis-ci.org/shakyShane/grunt-cache-breaker.png?branch=master)](https://travis-ci.org/shakyShane/grunt-cache-breaker)
 
+```html
+<!-- Turn this -->
+<script src="/js/dist/combined.min.js"></script>
 
-    <!-- Turn this -->
-    <script src="/js/dist/combined.min.js"></script>
+<!-- into this -->
+<script src="/js/dist/combined.min.js?rel=123456"></script>
 
-    <!-- into this -->
-    <script src="/js/dist/combined.min.js?rel=123456"></script>
+<!-- or this -->
+<script src="/js/dist/combined.min.123456.js"></script>
 
-    <!-- or this -->
-    <script src="/js/dist/combined.min.123456.js"></script>
-
-    <!-- or this (md5 hash of file contents) -->
-    <script src="/js/dist/combined.min.ow23de343.js"></script>
-
+<!-- or this (md5 hash of file contents) -->
+<script src="/js/dist/combined.min.ow23de343.js"></script>
+```
 
 ## Getting Started
 
@@ -108,6 +108,36 @@ cachebreaker: {
             src: {
                 path: 'app/all.js'
             }
+        },
+        files: {
+            src: ['index.html']
+        }
+    }
+}
+```
+
+##Multiple MD5 hashs (v2.0.0 required)
+Use the contents of multiple files to generate a hash for each.
+NOTE: When passing an object to the `match` array like this, each `key`
+is the pattern to search for in the html file & the value is the actual
+file to be hashed. 
+
+If you're not sure, check the [Gruntfile.js](https://github.com/shakyShane/grunt-cache-breaker/blob/master/Gruntfile.js#L56-L69)
+in this project for working examples.
+
+```js
+// Append a md5 hash to 'all.js' & `script.js` which is located in 'index.html'
+cachebreaker: {
+    dev: {
+        options: {
+            match: [
+                {
+                    // Pattern    // File to hash
+                    'script.js': 'test/fixtures/js/script.js',
+                    'app.js':    'test/fixtures/js/app.js'
+                }
+            ],
+            replacement: 'md5'
         },
         files: {
             src: ['index.html']
