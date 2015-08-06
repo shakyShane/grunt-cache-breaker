@@ -1,7 +1,7 @@
 {
   "name": "grunt-cache-breaker",
   "description": "Simple cache-breaker, appends a timestamp or md5 hash to any urls",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/shakyshane/grunt-cache-breaker",
   "author": {
     "name": "Shane Osbourne",
