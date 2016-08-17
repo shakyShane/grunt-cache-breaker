@@ -1,8 +1,3 @@
-#Contributor's note:
-This package is based in grunt-cache-breaker by shakyShane (https://github.com/shakyShane) and I only did some small improvements based in one of my projects requirements.
-
-I'm **not** the original author.
-
 # grunt-cache-breaker [![Build Status](https://travis-ci.org/shakyShane/grunt-cache-breaker.png?branch=master)](https://travis-ci.org/shakyShane/grunt-cache-breaker)
 
 ```html
