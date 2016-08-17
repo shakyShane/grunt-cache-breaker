@@ -51,7 +51,7 @@ module.exports = function (grunt) {
                     grunt.log.ok("Cache broken in: " + filepath.cyan);
                     grunt.file.write(dest, input);
                 } else {
-                    return grunt.fail.warn("No changes were made.");
+                    grunt.log.warn("It was a problem cache-breaking: " + filepath.red + "\nSkipped :)");
                 }
             });
         });
