@@ -7,26 +7,22 @@
     "name": "Shane Osbourne",
     "email": "shane.osbourne8@gmail.com"
   },
-  "contributor": {
-    "name": "Victor Moreno Alhambra",
-    "email": "vmoreno87@gmail.com"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Merk87/grunt-cache-breaker.git"
+    "url": "git://github.com/shakyshane/grunt-cache-breaker.git"
   },
   "bugs": {
-    "url": "https://github.com/Merk87/grunt-cache-breaker/issues"
+    "url": "https://github.com/shakyshane/grunt-cache-breaker/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/Merk87/grunt-cache-breaker/blob/master/LICENSE-MIT"
+      "url": "https://github.com/shakyshane/grunt-cache-breaker/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "grunt"
